@@ -16,7 +16,7 @@ public class StringCalculator
 		
 		if(numbers.isEmpty() || numbers == null)
 		{
-			return 0;
+			return 0;	
 		}
 		
 		else if(numbers.contains(",") || numbers.contains("\n"))
@@ -29,6 +29,7 @@ public class StringCalculator
 		{
 			return Integer.parseInt(numbers);
 		}
+		
 	}
 	
 	private static int getMultipleNumberSum(String [] number)
@@ -36,9 +37,7 @@ public class StringCalculator
         int sum = 0;
         
         int size = number.length;
-        
-		// int[] newNumber = new int[size];
-		
+        		
 		int checkValidNumber = 0;
 		
 		String str = "";
@@ -87,7 +86,7 @@ public class StringCalculator
 		{
 			if(number.startsWith("//["))
 			{
-				return supportDifferentDelimiterAnyLengthAndSplit(number);
+				return supportDifferentOrMultipleDelimiterAnyLengthAndSplit(number);
 			}
 			
 			else
@@ -122,17 +121,42 @@ public class StringCalculator
 		return newNumber.split(delimiter);
 	}
 	
-	private static String[] supportDifferentDelimiterAnyLengthAndSplit(String number)
+	private static String[] supportDifferentOrMultipleDelimiterAnyLengthAndSplit(String number)
 	{
-		Matcher checkNumberMatch = Pattern.compile("//(\\[.+\\])\n(.*)").matcher(number);
+		Matcher checkNumberMatch = Pattern.compile("//(\\[.+\\])+\n(.*)").matcher(number);
 		
 		checkNumberMatch.matches();
 		
-		String delimiter = checkNumberMatch.group(1);
+		String checkDelimiter = checkNumberMatch.group(1);
+		
+		String delimiters = new String();
+
+		int size = checkDelimiter.length();
+		
+		int end = 0;
+		
+		for(int i = 0; i < size ; i++)
+		{
+			if( checkDelimiter.charAt(i) == ']' && i != size - 1 )
+			{	
+				delimiters = delimiters + checkDelimiter.substring(end,i);
+				
+				delimiters = delimiters + "]|";
+				
+				end = i + 1;
+
+			}
+
+			else if(i == size-1)
+			{
+				delimiters += checkDelimiter.substring(end,i) + "]";
+			}
+				
+		}
 		
 		String newNumber = checkNumberMatch.group(2);
-		
-		return newNumber.split(delimiter);
+
+		return newNumber.split(delimiters); 
 	}
 	
 	public static int getCalledCount()
@@ -141,4 +165,3 @@ public class StringCalculator
 	}
 
 }
-

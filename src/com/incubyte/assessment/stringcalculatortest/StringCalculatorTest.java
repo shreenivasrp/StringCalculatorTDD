@@ -89,6 +89,20 @@ class StringCalculatorTest
 		
 		assertEquals(10, calculator.add("//[***]\n3***2***5"));
 	}
+	
+	@Test
+	public void allowMutlipleDelimiterBetweenNumbersAndReturnSum() 
+	{
+		
+		assertEquals(10, calculator.add("//[*][%]\n3*2%5"));
+	}
+	
+	@Test
+	public void allowMutlipleDelimiterOfAnyLengthBetweenNumbersAndReturnSum() 
+	{
+		
+		assertEquals(10, calculator.add("//[**][%%]\n3**2%%5"));
+	}
 
 
 }
