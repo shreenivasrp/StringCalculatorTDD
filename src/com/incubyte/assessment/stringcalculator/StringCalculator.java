@@ -8,8 +8,11 @@ import java.util.regex.Pattern;
 public class StringCalculator 
 {
 	
+	public static int getAddCount = 0;
+	
 	public int add(String numbers) 
 	{ 
+		getAddCount++;
 		
 		if(numbers.isEmpty() || numbers == null)
 		{
@@ -26,7 +29,7 @@ public class StringCalculator
 		{
 			return Integer.parseInt(numbers);
 		}
-
+		
 	}
 	
 	private static int getMultipleNumberSum(String [] number)
@@ -95,4 +98,10 @@ public class StringCalculator
 		return newNumber.split(delimiter);
 	}
 	
+	public static int getCalledCount()
+	{
+		return getAddCount;
+	}
+
 }
+

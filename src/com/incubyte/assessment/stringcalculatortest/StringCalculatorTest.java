@@ -68,6 +68,13 @@ class StringCalculatorTest
 			assertEquals("Negatives not allowed: [-3, -2]", e.getMessage());
 		}
 	}
+	
+	@Test
+	public void getAddCallCount()
+	{
+		
+		assertEquals(StringCalculator.getCalledCount(), StringCalculator.getAddCount);
+	}
 
 
 
