@@ -45,5 +45,13 @@ class StringCalculatorTest
 		
 		assertEquals(10, calculator.add("3\n2,5"));
 	}
+	
+	@Test
+	public void checkIfStringContainsDelimiterStartWithLineAndReturnSum() 
+	{
+		
+		assertEquals(3, calculator.add("//;\n1;2"));
+	}
+
 
 }
