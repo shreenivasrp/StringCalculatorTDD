@@ -8,12 +8,12 @@ public class StringCalculator
 		
 		if(numbers.isEmpty() || numbers == null)
 		{
-			return 0;
+			return 0;	
 		}
 		
-		else if(numbers.contains(","))
+		else if(numbers.contains(",") || numbers.contains("\n"))
 		{			
-			String[] newNumbers = numbers.split(",");
+			String[] newNumbers = numbers.split(",|\n");
 			
 			return getMultipleNumberSum(newNumbers);
 		}

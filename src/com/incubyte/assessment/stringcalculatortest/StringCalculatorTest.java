@@ -39,4 +39,11 @@ class StringCalculatorTest
 		assertEquals(10, calculator.add("3,2,5"));
 	}
 	
+	@Test
+	public void allowNewLineAsValidDelimiterBetweenNumbersAndReturnSum() 
+	{
+		
+		assertEquals(10, calculator.add("3\n2,5"));
+	}
+
 }
