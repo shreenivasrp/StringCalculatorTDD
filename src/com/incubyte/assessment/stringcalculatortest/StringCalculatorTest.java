@@ -52,6 +52,22 @@ class StringCalculatorTest
 		
 		assertEquals(3, calculator.add("//;\n1;2"));
 	}
+	
+	@Test
+	public void checkIfStringContainsNegativeNumberAndReturnException() 
+	{
+		try 
+		{
+			calculator.add("-3,5");
+			
+			fail("Negative Number Exception expected.");
+		}
+		
+		catch(RuntimeException e)
+		{
+			assertEquals("Negatives not allowed: -3", e.getMessage());
+		}
+	}
 
 
 }

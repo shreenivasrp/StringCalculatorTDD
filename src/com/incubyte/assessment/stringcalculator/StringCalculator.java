@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator 
 {
-	
+
 	public int add(String numbers) 
 	{ 
 		
@@ -24,16 +24,29 @@ public class StringCalculator
 		{
 			return Integer.parseInt(numbers);
 		}
-	
 	}
 	
 	private static int getMultipleNumberSum(String [] number)
     {       
         int sum = 0;
         
-        for(String addNumber : number)
-        {
-		    sum = sum + Integer.parseInt(addNumber);
+        int size = number.length;
+        
+		int[] newNumber = new int[size];
+		
+		for(int i = 0; i<size; i++)
+		{
+			newNumber[i] = Integer.parseInt(number[i]);
+        	
+        	if(newNumber[i] < 0)
+        	{
+				throw new RuntimeException("Negatives not allowed: " + newNumber[i]);
+        	}
+        	
+        	else
+        	{
+        		sum = sum + newNumber[i];
+        	}       		
 		}
         
 		return sum;
