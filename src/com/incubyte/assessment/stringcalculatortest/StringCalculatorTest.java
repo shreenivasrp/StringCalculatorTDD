@@ -82,6 +82,13 @@ class StringCalculatorTest
 		
 		assertEquals(5, calculator.add("5,1002"));
 	}
+	
+	@Test
+	public void allowOneDelimiterOfAnyLengthBetweenNumbersAndReturnSum() 
+	{
+		
+		assertEquals(10, calculator.add("//[***]\n3***2***5"));
+	}
 
 
 }
