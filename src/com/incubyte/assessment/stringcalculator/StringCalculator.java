@@ -1,11 +1,13 @@
 package com.incubyte.assessment.stringcalculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator 
 {
-
+	
 	public int add(String numbers) 
 	{ 
 		
@@ -24,6 +26,7 @@ public class StringCalculator
 		{
 			return Integer.parseInt(numbers);
 		}
+
 	}
 	
 	private static int getMultipleNumberSum(String [] number)
@@ -34,19 +37,26 @@ public class StringCalculator
         
 		int[] newNumber = new int[size];
 		
+		List <Integer> negativeNumbers = new ArrayList<>();
+		
 		for(int i = 0; i<size; i++)
 		{
 			newNumber[i] = Integer.parseInt(number[i]);
         	
         	if(newNumber[i] < 0)
         	{
-				throw new RuntimeException("Negatives not allowed: " + newNumber[i]);
+        		negativeNumbers.add(newNumber[i]);
         	}
         	
         	else
         	{
         		sum = sum + newNumber[i];
         	}       		
+		}
+		
+		if(negativeNumbers.size() > 0)
+		{
+			throw new RuntimeException("Negatives not allowed: " + negativeNumbers);
 		}
         
 		return sum;
@@ -85,6 +95,4 @@ public class StringCalculator
 		return newNumber.split(delimiter);
 	}
 	
-	
-
 }

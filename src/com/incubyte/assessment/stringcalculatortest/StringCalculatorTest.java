@@ -58,16 +58,17 @@ class StringCalculatorTest
 	{
 		try 
 		{
-			calculator.add("-3,5");
+			calculator.add("-3,-2,5");
 			
 			fail("Negative Number Exception expected.");
 		}
 		
 		catch(RuntimeException e)
 		{
-			assertEquals("Negatives not allowed: -3", e.getMessage());
+			assertEquals("Negatives not allowed: [-3, -2]", e.getMessage());
 		}
 	}
+
 
 
 }
