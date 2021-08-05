@@ -16,7 +16,7 @@ public class StringCalculator
 		
 		if(numbers.isEmpty() || numbers == null)
 		{
-			return 0;
+			return 0;	
 		}
 		
 		else if(numbers.contains(",") || numbers.contains("\n"))
@@ -37,24 +37,31 @@ public class StringCalculator
         int sum = 0;
         
         int size = number.length;
-        
-		int[] newNumber = new int[size];
-		
+        		
+		int checkValidNumber = 0;
+						
 		List <Integer> negativeNumbers = new ArrayList<>();
+		
+		List <Integer> ignoredNumbers = new ArrayList<>();
 		
 		for(int i = 0; i<size; i++)
 		{
-			newNumber[i] = Integer.parseInt(number[i]);
-        	
-        	if(newNumber[i] < 0)
-        	{
-        		negativeNumbers.add(newNumber[i]);
-        	}
-        	
-        	else
-        	{
-        		sum = sum + newNumber[i];
-        	}       		
+			
+				checkValidNumber = Integer.parseInt(number[i]);
+
+				if(checkValidNumber < 0)
+				{
+					negativeNumbers.add(checkValidNumber);
+				}
+				if(checkValidNumber > 1000)
+				{
+					checkValidNumber = 0;
+				}
+				
+				ignoredNumbers.add(checkValidNumber);
+				
+				sum = sum + checkValidNumber;
+        	       		
 		}
 		
 		if(negativeNumbers.size() > 0)
@@ -104,4 +111,3 @@ public class StringCalculator
 	}
 
 }
-

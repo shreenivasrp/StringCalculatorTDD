@@ -76,6 +76,12 @@ class StringCalculatorTest
 		assertEquals(StringCalculator.getCalledCount(), StringCalculator.getAddCount);
 	}
 
+	@Test
+	public void checkIfStringContainsNumberGreaterThan1000AndIgnoreTheNo() 
+	{
+		
+		assertEquals(5, calculator.add("5,1002"));
+	}
 
 
 }
